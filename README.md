@@ -1,18 +1,18 @@
 # NavigationLib
 A simple navigation sub system for WinForms projects.
 
+Super simple to register views.
+
 `
 NavigationSystem.Register("HomePage", new HomeView());
-`
 
-`
 NavigationSystem.Register("SettingsPage", new SettingsView());
 `
-
+Set a home view which may be visited frequently
 `
 NavigationSystem.SetHome("HomePage");
 `
-
+Navigate using keys.
 `
 NavigationSystem.NavigateTo("SettingsPage");
 `
