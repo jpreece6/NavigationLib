@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>NavigationLib</id>
+    <version>0.1</version>
+    <title>NavigationLib</title>
+    <authors>Josh</authors>
+    <owners>Josh</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Navigation Sub System</description>
+    <copyright>Copyright 2017</copyright>
+  </metadata>
+</package>
