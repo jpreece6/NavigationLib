@@ -36,7 +36,8 @@ namespace NavigationLib
 
         public Page()
         {
-
+            if (this.Parent != null)
+                this.Size = this.Parent.Size;
         }
 
         public Page(BaseController pageController)
@@ -49,11 +50,13 @@ namespace NavigationLib
             if (PageSizeMode == PageSizeModeDef.Auto)
                 this.Size = Parent.Size;
 
+            AddBindings();
             OnShow?.Invoke(this, new EventArgs());
         }
 
         public new virtual void Leave()
         {
+            RemoveBindings();
             OnLeave?.Invoke(this, new EventArgs());
         }
 
@@ -66,5 +69,9 @@ namespace NavigationLib
         {
             MessageReceived?.Invoke(this, new MessageEventArgs(key, data));
         }
+
+        public virtual void AddBindings() { }
+
+        public virtual void RemoveBindings() { }
     }
 }

@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace NavigationLib
 {
-    public static class MessageSystem
+    public class MessageSystem
     {
 
-        private static Dictionary<string, Page> _pages
-        {
-            get
-            {
-                return NavigationSystem.GetPages();
-            }
-        }
 
-        public static void BroadcastMessage(string key, object data)
+        private Dictionary<Type, List<WeakAction>> _recipients;
+
+        public void Register<TMessage>(Page pg, Action<TMessage> action)
+        {
+            
+        }
+        /*
+        public void BroadcastMessage(string key, object data)
         {
             foreach(var itmPage in _pages)
             {
@@ -25,7 +25,7 @@ namespace NavigationLib
             }
         }
 
-        public static void SendMessage(string pageKey, string key, object data)
+        public void SendMessage(string pageKey, string key, object data)
         {
             if (_pages.ContainsKey(pageKey) == false)
                 throw new ArgumentException("Page does not exist");
@@ -33,7 +33,7 @@ namespace NavigationLib
             var page = _pages[pageKey];
             page.ReceiveMessage(key, data);
         }
-
+        */
         public class MessageEventArgs : EventArgs
         {
             public string Key { get; }
@@ -44,6 +44,13 @@ namespace NavigationLib
                 Key = key;
                 Data = data;
             }
+        }
+
+        public class WeakAction
+        {
+            public string PageKey { get; set; }
+            public Page Recepient { get; set; }
+            public Action MessageAction { get; set; }
         }
     }
 }
